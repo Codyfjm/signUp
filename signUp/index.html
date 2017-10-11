@@ -1,0 +1,129 @@
+<html>
+<head>
+	<title>阳江一中97届20周年同学聚会</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+
+	<style>
+		.one{margin-top:100%; left: 25%; width: 100%; height: 0px;padding-bottom: 0; position:relative; z-index: 1;}
+		.inp {width: 100%; height: 2rem; border:none;outline:medium; 
+		border-radius:5px; background-color:transparent;color:#787575;
+		text-indent: 2%;font-size:1.2rem;font-family: "Microsoft YaHei";}
+
+		input[type="submit"]{
+			-webkit-transform: scale(0.4);
+			background:url(img/bt_sign_up.png);
+			width:300px;
+			height:75px;
+			border:none;
+			outline:medium;
+		}
+		
+		#clas{width: 100%; height: 2rem; border:none;outline:medium; 
+		border-radius:5px; background-color:transparent;color:#787575;
+		text-indent: 2%;font-size:1.2rem;font-family: "Microsoft YaHei";}
+
+
+		/* 超小屏幕（手机，小于 768px） */
+		/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+		/* 小屏幕（平板，大于等于 768px） */
+		@media (min-width: 200px) {
+			input[type="submit"]{margin-left: 5%}
+		}
+
+		/* 中等屏幕（桌面显示器，大于等于 992px） */
+		@media (min-width: 400px) {
+			input[type="submit"]{margin-left: 15%}
+		}
+
+		/* 大屏幕（大桌面显示器，大于等于 1200px） */
+		@media (min-width: 500px) {
+			input[type="submit"]{margin-left: 30%}
+		}
+	</style>
+
+</head>
+
+<body style="margin: 0;width: 100%;height: 100%;overflow: hidden;">
+<div style="width: 100%; height: 0px;padding-bottom: 0; position:relative; z-index: 0;" >
+	<img src="img/bg_index.png" style="width: 100%" />
+</div>
+<form action="list.php" method="post" onsubmit="return toVaild()">
+<div class="one">
+	<img src="img/bg_input.png" style="width: 50%; position:absolute; z-index: 2;" />
+	<div style="width: 48%; left: 1%; height: 1rem; position: relative; z-index: 3">
+		<input type="text" name="username" id="username" placeholder="请输入姓名" class="inp"
+		onkeyup="(this.v=function(){this.value=this.value.replace(/[^\u4E00-\u9FA5]/g,'');}).call(this)">
+	</div>
+</div>
+
+<div style="margin-top:14%; left: 25%; " class="one">
+	<img src="img/bg_input.png" style="width: 50%; position:absolute; z-index: 2;" />
+	<div style="width: 48%; left: 1%; height: 1rem; position: relative; z-index: 3">
+		<input type="number" name="phonenum" id="phonenum" placeholder="请输入手机号码" class="inp" 
+		onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)">
+	</div>
+</div>
+
+<div style="margin-top:14%; left: 25%; " class="one">
+	<img src="img/bg_select.png" style="width: 50%; position:absolute; z-index: 2;" />
+	<div style="width:50%; position: relative; z-index:4; background-color:transparent;">
+		<select name="class" id="clas" style="width:100%; position: absolute; z-index: 5; background-color:transparent; ">
+			<option>请选择班级</option>
+			<option value="1">高一（1）班</option>
+			<option value="2">高一（2）班</option>
+			<option value="3">高一（3）班</option>
+			<option value="4">高一（4）班</option>
+			<option value="5">高一（5）班</option>
+			<option value="6">高一（6）班</option>
+			<option value="7">高一（7）班</option>
+			<option value="8">高一（8）班</option>
+		</select>
+		<img src="img/bg_select_rg.png" style="width: 25%; position:relative; z-index: 6; margin-left: 75%" />
+	</div>
+
+</div>
+
+<div style="margin-top:10%; left: 0%; " class="one">
+	<input type="submit" value="">
+
+</div>
+</form>
+<script language="javascript">
+
+	function toVaild(){
+		 var username = document.getElementById("username").value;
+		 var phonenum = document.getElementById("phonenum").value;
+		 var classes = document.getElementById("clas").value;
+		 var regPhone=/^1[345678]\d{9}$/;
+		 var regName=/[^\u4e00-\u9fa5]/g;
+		 if(phonenum==''){
+		    alert("手机号不能为空");
+			return false;
+		 }else if(!regPhone.test(phonenum)){
+			alert("请输入正确的11位手机号");
+			return false;
+		 }
+		 
+		 if(username==''){
+			alert("名字不能空");
+			return false;
+		 }else if(regName.test(username)){
+			alert("请输入中文名字");
+			return false;
+		 }
+		 
+		 if(classes==''| classes=='请选择班级'){
+			alert("请选择其中一个班级");
+			return false;
+		 }
+		 return true;
+	}
+
+</script>
+
+</body>
+
+</html>
